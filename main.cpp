@@ -1,3 +1,4 @@
+//edited
 #include <iostream>
 #include <math.h>
 #include "Point.h"
@@ -5,38 +6,39 @@
 using namespace std;
 
 int main() {
-    Polynom obj("ABCD");
-    const int len = 4;
-    Point points[len];
+    Polynom object("ABCD");
+    const int length = 4;
+    Point points[length];
     points[0].setPoint('A', 3, 8);
     points[1].setPoint('B', 2, 5);
     points[2].setPoint('C', 1, 7);
     points[3].setPoint('D', 4, 9);
-    cout << obj.getName() << endl;
+    cout << object.getName() << endl;
 
-    Perimeter(&points[0], len);
-    Diagonal(&points[0], len);
+    Perimeter(&points[0], length);
+    Diagonal(&points[0], length);
 
     cout << endl;
     cout << endl << "Output points:" << endl;
-    points[0].printCords();
-    points[1].printCords();
-    points[2].printCords();
-    points[3].printCords();
+    points[0].PrintCords();
+    points[1].PrintCords();
+    points[2].PrintCords();
+    points[3].PrintCords();
 
-    sortX(&points[0], len);
+    SortX(&points[0], length);
     cout << "sorted by x:" << endl;
-    points[0].printCords();
-    points[1].printCords();
-    points[2].printCords();
-    points[3].printCords();
+    points[0].PrintCords();
+    points[1].PrintCords();
+    points[2].PrintCords();
+    points[3].PrintCords();
 
-    sortY(&points[0], len);
+    SortY(&points[0], length);
     cout << "sorted by y:" << endl;
-    points[0].printCords();
-    points[1].printCords();
-    points[2].printCords();
-    points[3].printCords();
+    points[0].PrintCords();
+    points[1].PrintCords();
+    points[2].PrintCords();
+    points[3].PrintCords();
 
     return 0;
 }
+

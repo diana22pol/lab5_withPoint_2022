@@ -1,16 +1,16 @@
+//edited
 #pragma once
 #include <iostream>
 #include <math.h>
 #include "Polynom.h"
-
 using namespace std;
 
 class Point : public Polynom
 {
 public:
     string pointName;
-    int x;
-    int y;
+    int x_cord;
+    int y_cord;
 
     enum Colors
     {
@@ -20,58 +20,57 @@ public:
         BLACK,
         PINK
     };
-    void setPoint(char c, int a, int b)
+    void setPoint(char point_name, int x, int y)
     {
-        pointName = c;
-        x = a;
-        y = b;
+        pointName = point_name;
+        x_cord = x;
+        y_cord = y;
     }
-    void printCords()
+    void PrintCords()
     {
         cout << pointName << endl;
-        cout << "x = " << x << "\ty = " << y << endl << endl;
+        cout << "x = " << x_cord << "\ty = " << y_cord << endl << endl;
     }
-
 };
 
-float distance(Point a, Point b)
+float Distance(Point x, Point y)
 {
-    float num = pow(b.x - a.x, 2) + pow(b.y - a.y, 2);
-    float res = sqrt(num);
-    return res;
+    float num = pow(y.x_cord - x.x_cord, 2) + pow(y.y_cord - x.y_cord, 2);
+    float result = sqrt(num);
+    return result;
 }
 
-void Perimeter(Point points[], int len)
+void Perimeter(Point points[], int length)
 {
     float perimeter = 0.0;
-    float dst;
+    float distance;
     int i = 0;
     do
     {
-        dst = distance(points[i], points[i + 1]);
-        cout << "Distance " << i + 1 << " : " << dst << endl;
-        perimeter += dst;
+        distance = Distance(points[i], points[i + 1]);
+        cout << "Distance " << i + 1 << " : " << distance << endl;
+        perimeter += distance;
         i++;
-    } while (i < len - 1);
-    dst = distance(points[i], points[0]);
-    cout << "Distance " << i + 1 << " : " << dst << endl << endl;
-    perimeter += dst;
+    } while (i < length - 1);
+    distance = Distance(points[i], points[0]);
+    cout << "Distance " << i + 1 << " : " << distance << endl << endl;
+    perimeter += distance;
     cout << "Perimeter: " << perimeter << endl << endl;
 }
 
-void Diagonal(Point points[], int len)
+void Diagonal(Point points[], int length)
 {
 
     float diagonal;
     int i = 0;
-    if (i < len - 3)
+    if (i < length - 3)
     {
-        diagonal = distance(points[i], points[i + 2]);
+        diagonal = Distance(points[i], points[i + 2]);
         cout << "Diagonal " << i + 1 << ": " << diagonal << endl;
         i++;
     }
-    if (i < len - 2) {
-        diagonal = distance(points[i], points[i + 2]);
+    if (i < length - 2) {
+        diagonal = Distance(points[i], points[i + 2]);
         cout << "Diagonal " << i + 1 << ": " << diagonal << endl;
         i++;
     }
@@ -84,35 +83,36 @@ void Diagonal(Point points[], int len)
 }
 
 
-void sortX(Point arrayX[], int size)
+void SortX(Point arrayX[], int size)
 {
     for (int i = 0; i < size - 1; i++)
     {
         for (int j = 0; j < size - i - 1; j++)
         {
-            if (arrayX[j].x > arrayX[j + 1].x)
+            if (arrayX[j].x_cord > arrayX[j + 1].x_cord)
             {
-                Point temp = arrayX[j];
+                Point temporary = arrayX[j];
                 arrayX[j] = arrayX[j + 1];
-                arrayX[j + 1] = temp;
+                arrayX[j + 1] = temporary;
             }
         }
     }
 }
 
-void sortY(Point arrayY[], int Size)
+void SortY(Point arrayY[], int Size)
 {
     for (int i = 0; i < Size - 1; i++)
     {
         for (int j = 0; j < Size - i - 1; j++)
         {
-            if (arrayY[j].y > arrayY[j + 1].y)
+            if (arrayY[j].y_cord > arrayY[j + 1].y_cord)
             {
-                Point temp = arrayY[j];
+                Point temporary = arrayY[j];
                 arrayY[j] = arrayY[j + 1];
-                arrayY[j + 1] = temp;
+                arrayY[j + 1] = temporary;
             }
         }
     }
 }
+
 
